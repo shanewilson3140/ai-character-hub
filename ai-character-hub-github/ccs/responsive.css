@@ -1,0 +1,264 @@
+/* Responsive Styles */
+
+/* Tablet and below */
+@media (max-width: 768px) {
+    /* Navigation */
+    .nav {
+        position: fixed;
+        left: -250px;
+        transition: left 0.3s ease;
+    }
+    
+    .nav.mobile-open {
+        left: 0;
+    }
+    
+    .nav-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        display: none;
+        z-index: 99;
+    }
+    
+    .nav-overlay.active {
+        display: block;
+    }
+    
+    /* Main Content */
+    .main {
+        margin-left: 0;
+        padding-top: 60px;
+    }
+    
+    /* Mobile Header */
+    .mobile-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        background: var(--surface);
+        border-bottom: 1px solid var(--border);
+        padding: 0 var(--spacing-md);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 98;
+    }
+    
+    .mobile-menu-btn {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        padding: var(--spacing-sm);
+        cursor: pointer;
+    }
+    
+    /* Grid Adjustments */
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    
+    /* Card Adjustments */
+    .card {
+        padding: var(--spacing-md);
+    }
+    
+    /* Modal Adjustments */
+    .modal-content {
+        margin: var(--spacing-md);
+        max-width: calc(100% - 2rem);
+    }
+    
+    /* Form Adjustments */
+    .form-row {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    /* Character Grid */
+    .character-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+    
+    /* Chat Interface */
+    .chat-sidebar {
+        position: fixed;
+        left: -300px;
+        top: 60px;
+        bottom: 0;
+        width: 300px;
+        background: var(--surface);
+        border-right: 1px solid var(--border);
+        transition: left 0.3s ease;
+        z-index: 97;
+    }
+    
+    .chat-sidebar.mobile-open {
+        left: 0;
+    }
+    
+    .chat-main {
+        margin-left: 0;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    /* Typography */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    
+    /* Grid Adjustments */
+    .grid-cols-2,
+    .grid-cols-3,
+    .grid-cols-4 {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Button Adjustments */
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 0.875rem;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn-group .btn {
+        width: 100%;
+    }
+    
+    /* Card Adjustments */
+    .card-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .card-actions {
+        flex-wrap: wrap;
+    }
+    
+    /* Character Grid */
+    .character-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Chat Messages */
+    .message {
+        max-width: 90%;
+    }
+    
+    /* Tab Scrolling */
+    .tabs {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+    
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1024px) {
+    .main {
+        margin-left: 250px;
+    }
+    
+    .mobile-header {
+        display: none;
+    }
+    
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 var(--spacing-lg);
+    }
+}
+
+/* Extra Large Screens */
+@media (min-width: 1440px) {
+    .grid-cols-xl-5 {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+    
+    .grid-cols-xl-6 {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+}
+
+/* Print Styles */
+@media print {
+    .nav,
+    .mobile-header,
+    .nav-overlay,
+    .btn-icon,
+    .modal,
+    .chat-input {
+        display: none !important;
+    }
+    
+    .main {
+        margin-left: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .card {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+}
+
+/* Hover Effects - Only on non-touch devices */
+@media (hover: hover) {
+    .card:hover {
+        transform: translateY(-2px);
+    }
+    
+    .btn:hover {
+        transform: translateY(-1px);
+    }
+    
+    .character-card:hover .character-actions {
+        opacity: 1;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Dark Mode Preference */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #0f172a;
+        --surface: #1e293b;
+        --surface-hover: #334155;
+        --border: #334155;
+        --text: #f1f5f9;
+        --text-secondary: #cbd5e1;
+        --text-tertiary: #94a3b8;
+    }
+}
